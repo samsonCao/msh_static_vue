@@ -29,4 +29,6 @@ yarn run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-# 可参考的移动端UI库 https://github.com/didi/cube-ui
+### 可参考的移动端UI库 https://github.com/didi/cube-ui
+
+### 可参考的移动端UI库， antd-mobile风格的，新维护的项目可能的bug会比较多 https://github.com/wuhao000/antd-mobile-vue
