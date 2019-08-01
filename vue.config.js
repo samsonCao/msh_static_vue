@@ -13,18 +13,11 @@ module.exports = {
         }
       }
     }
-
-    // alias: {
-    //     '@': path.resolve(__dirname, 'src'),
-    //     'helper': path.resolve(__dirname, 'src/helper'),
-    // },
-    if (process.env.NODE_ENV === 'production') {
-      // 为生产环境修改配置...
-    } else {
-      return {
-
-      }
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   // 为生产环境修改配置...
+    // } else {
+    //
+    // }
   },
   lintOnSave: false,
   devServer: {
