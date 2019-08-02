@@ -10,13 +10,13 @@
 
 <script>
 
-  export default {
-    data() {
-      return {
-        type: true
-      }
+export default {
+  data() {
+    return {
+      type: true
     }
   }
+}
 </script>
 
 <style lang="less">

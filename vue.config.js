@@ -19,13 +19,19 @@ module.exports = {
     //
     // }
   },
+  devtools: true, // 开发时的错误提示
+  errorHandler: function(err, vm, info) {
+    console.log(err, 'config-err')
+    console.log(vm, 'config-vm')
+    console.log(info, 'config-info')
+  },
   lintOnSave: false,
   devServer: {
     // 禁用热加载
     hot: false,
     inline: false,
     host: '0.0.0.0',
-    port: '8090',
+    port: '9999',
     proxy: {
       '/api-node': {
         target: 'http://127.0.0.1:xxxxx/',

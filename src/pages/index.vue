@@ -1,8 +1,14 @@
 <template>
   <div>
-    <header class="header_banner">
+    <header class="header_banner" @click="handleAdd(5)">
       <img :src="banner" alt="" class="header_banner_image">
     </header>
+    <div v-once>{{ number }}</div>
+    <div>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
+    <div>{{ computedFunc }}computedFunc----</div>
+    <div>{{ methodFunc() }}methodFunc----</div>
     <section v-for="(item, index) in data" :key="index" class="section_content">
       <div class="content_card" @click="handleToMessage">
         <div class="content_card_left">
@@ -31,15 +37,65 @@ import banner from 'assets/01-banner.png'
 export default {
   data() {
     return {
+      number: 1,
       data,
-      banner
+      banner,
+      rawHtml: '<span style="color:red">red xxx</span>'
     }
   },
+  // html中插值语法时-调用时用的是方法。computed带有缓存功能，对于任何复杂逻辑，你都应当使用计算属性
+  // 如果入参goodsList不变化，是直接拿到计算的结果，所以说是缓存了
+  // 防止文本插值中逻辑过重，导致不易维护
+  computed: {
+    computedFunc() {
+      return this.$store.state.goodsList
+    }
+  },
+  // 创建期
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
+  created() {
+    console.log('created')
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+
+  // 创建完成
+  mounted() {
+    console.log('mounted')
+  },
+
+  // 修改期
+  beforeUpdate() {
+    console.log('beforeUpdate')
+  },
+  updated() {
+    console.log('updated', this.number)
+  },
+
+  // 销毁期
+  beforeDestroy() {
+    console.log('beforeDestroy')
+  },
+  destroyed() {
+    console.log('destroyed')
+  },
+
+  // html中插值语法时-调用时用的是方法的执行
+  // 即使入参不变化，也要每次都执行一遍获取值。
   methods: {
     handleToMessage() {
       this.$router.push({
         path: '/message'
       })
+    },
+    methodFunc() {
+      return this.$store.state.goodsList
+    },
+    handleAdd(value) {
+      this.number = value
     }
   }
 }
